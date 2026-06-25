@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jingga Sheet Yield Calculator</title>
+
+<style>
+
+/* ==========================================
+   RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ==========================================
+   BODY
+========================================== */
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+    padding:20px;
+}
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.container{
+    max-width:1400px;
+    margin:auto;
+}
+
+/* ==========================================
+   PAGE TITLE
+========================================== */
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    color:#ff6600;
+}
+
+/* ==========================================
+   2 COLUMN LAYOUT
+========================================== */
+
+.wrapper{
+    display:grid;
+    grid-template-columns:350px 1fr;
+    gap:20px;
+}
+
+/* ==========================================
+   CARD DESIGN
+========================================== */
+
+.card{
+    background:#fff;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* ==========================================
+   FORM LABEL
+========================================== */
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+/* ==========================================
+   INPUT BOX
+========================================== */
+
+input{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    border:none;
+    background:#ff6600;
+    color:white;
+    font-size:16px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e55a00;
+}
+
+/* ==========================================
+   RESULT SECTION
+========================================== */
+
+.result{
+    margin-top:20px;
+}
+
+.result div{
+    background:#fafafa;
+    padding:10px;
+    margin-bottom:10px;
+    border-left:5px solid #ff6600;
+}
+
+/* ==========================================
+   LAYOUT BUTTON AREA
+========================================== */
+
+.layout-buttons{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.layout-buttons button{
+    margin-top:0;
+    flex:1;
+}
+
+/* ==========================================
+   CANVAS
+========================================== */
+
+canvas{
+    width:100%;
+    height:auto;
+    border:1px solid #ddd;
+    background:#fff;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+    .wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .layout-buttons{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- =====================================
+         TITLE
+    ====================================== -->
+
+    <h1>Jingga Sheet Yield Calculator</h1>
+
+    <div class="wrapper">
+
+        <!-- =====================================
+             LEFT PANEL
+        ====================================== -->
+
+        <div class="card">
+
+            <!-- Parent Width -->
+            <label>Parent Width (mm)</label>
+            <input
+                type="number"
+                id="pw"
+                placeholder="Enter parent width"
+            >
+
+            <!-- Parent Height -->
+            <label>Parent Height (mm)</label>
+            <input
+                type="number"
+                id="ph"
+                placeholder="Enter parent height"
+            >
+
+            <!-- Child Width -->
+            <label>Child Width (mm)</label>
+            <input
+                type="number"
+                id="cw"
+                placeholder="Enter child width"
+            >
+
+            <!-- Child Height -->
+            <label>Child Height (mm)</label>
+            <input
+                type="number"
+                id="ch"
+                placeholder="Enter child height"
+            >
+
+            <!-- Calculate Button -->
+            <button onclick="calculate()">
+                Calculate
+            </button>
+
+            <!-- Result Area -->
+            <div
+                class="result"
+                id="result"
+            >
+            </div>
+
+        </div>
+
+        <!-- =====================================
+             RIGHT PANEL
+        ====================================== -->
+
+        <div class="card">
+
+            <!-- =================================
+                 LAYOUT SWITCHER
+            ================================== -->
+
+            <div class="layout-buttons">
+
+                <button onclick="showLayout('normal')">
+                    No Rotation
+                </button>
+
+                <button onclick="showLayout('rotate')">
+                    Rotate 90°
+                </button>
+
+                <button onclick="showLayout('mixed')">
+                    Mixed Rotation
+                </button>
+
+            </div>
+
+            <!-- =================================
+                 DRAWING CANVAS
+            ================================== -->
+
+            <canvas
+                id="canvas"
+                width="1000"
+                height="650"
+            ></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     PART 2 JAVASCRIPT AKAN BERMULA DI SINI
+========================================== -->
+
+<script>
+
+/*
+    PART 2 AKAN DISAMBUNG
+
+    - Global Variables
+    - No Rotation Algorithm
+    - Rotate 90 Algorithm
+    - Mixed Rotation Advanced
+
+*/
+
+</script>
+
+</body>
+</html>
+
+<script>
+
+/* ==========================================
+   GLOBAL VARIABLES
+========================================== */
+
+let normalLayout = [];
+let rotateLayout = [];
+let mixedLayout = [];
+
+let currentParentW = 0;
+let currentParentH = 0;
+
+let noRotationCount = 0;
+let rotateCount = 0;
+let mixedCount = 0;
+
+/* ==========================================
+   MAIN CALCULATE FUNCTION
+========================================== */
+
+function calculate(){
+
+    /* ===============================
+       GET USER INPUT
+    =============================== */
+
+    const pw =
+        parseFloat(
+            document.getElementById("pw").value
+        );
+
+    const ph =
+        parseFloat(
+            document.getElementById("ph").value
+        );
+
+    const cw =
+        parseFloat(
+            document.getElementById("cw").value
+        );
+
+    const ch =
+        parseFloat(
+            document.getElementById("ch").value
+        );
+
+    /* ===============================
+       VALIDATION
+    =============================== */
+
+    if(
+        !pw ||
+        !ph ||
+        !cw ||
+        !ch
+    ){
+
+        alert(
+            "Please fill all values."
+        );
+
+        return;
+    }
+
+    currentParentW = pw;
+    currentParentH = ph;
+
+    /* ===============================
+       BUILD NO ROTATION LAYOUT
+    =============================== */
+
+    buildNoRotation(
+        pw,
+        ph,
+        cw,
+        ch
+    );
+
+    /* ===============================
+       BUILD ROTATE LAYOUT
+    =============================== */
+
+    buildRotate(
+        pw,
+        ph,
+        cw,
+        ch
+    );
+
+    /* ===============================
+       BUILD ADVANCED MIXED
+    =============================== */
+
+    buildMixed(
+        pw,
+        ph,
+        cw,
+        ch
+    );
+
+    /* ===============================
+       YIELD CALCULATION
+    =============================== */
+
+    const yieldPercent =
+        (
+            mixedCount *
+            cw *
+            ch
+        )
+        /
+        (
+            pw *
+            ph
+        )
+        * 100;
+
+    /* ===============================
+       RESULT PANEL
+    =============================== */
+
+    document
+        .getElementById("result")
+        .innerHTML =
+
+    `
+    <div>
+        <b>No Rotation:</b>
+        ${noRotationCount} pcs
+    </div>
+
+    <div>
+        <b>Rotate 90°:</b>
+        ${rotateCount} pcs
+    </div>
+
+    <div>
+        <b>Best Mixed Rotation:</b>
+        ${mixedCount} pcs
+    </div>
+
+    <div>
+        <b>Yield:</b>
+        ${yieldPercent.toFixed(2)}%
+    </div>
+
+    <div>
+        <b>Parent Size:</b>
+        ${pw} × ${ph} mm
+    </div>
+
+    <div>
+        <b>Child Size:</b>
+        ${cw} × ${ch} mm
+    </div>
+    `;
+
+    /* ===============================
+       DEFAULT SHOW MIXED
+    =============================== */
+
+    showLayout("mixed");
+}
+
+/* ==========================================
+   NO ROTATION
+========================================== */
+
+function buildNoRotation(
+    pw,
+    ph,
+    cw,
+    ch
+){
+
+    normalLayout = [];
+
+    const cols =
+        Math.floor(
+            pw / cw
+        );
+
+    const rows =
+        Math.floor(
+            ph / ch
+        );
+
+    noRotationCount =
+        cols * rows;
+
+    for(
+        let c=0;
+        c<cols;
+        c++
+    ){
+
+        for(
+            let r=0;
+            r<rows;
+            r++
+        ){
+
+            normalLayout.push({
+
+                x:c*cw,
+                y:r*ch,
+
+                w:cw,
+                h:ch,
+
+                rotated:false
+
+            });
+
+        }
+
+    }
+
+}
+
+/* ==========================================
+   ROTATE 90°
+========================================== */
+
+function buildRotate(
+    pw,
+    ph,
+    cw,
+    ch
+){
+
+    rotateLayout = [];
+
+    const cols =
+        Math.floor(
+            pw / ch
+        );
+
+    const rows =
+        Math.floor(
+            ph / cw
+        );
+
+    rotateCount =
+        cols * rows;
+
+    for(
+        let c=0;
+        c<cols;
+        c++
+    ){
+
+        for(
+            let r=0;
+            r<rows;
+            r++
+        ){
+
+            rotateLayout.push({
+
+                x:c*ch,
+                y:r*cw,
+
+                w:ch,
+                h:cw,
+
+                rotated:true
+
+            });
+
+        }
+
+    }
+
+}
+
+/* ==========================================
+   MIXED ROTATION ADVANCED
+
+   SCENARIO A
+   NORMAL + RIGHT
+
+   SCENARIO B
+   NORMAL + BOTTOM
+
+   SCENARIO C
+   ROTATE + RIGHT
+
+   SCENARIO D
+   ROTATE + BOTTOM
+
+   CHOOSE BEST
+========================================== */
+
+function buildMixed(
+    pw,
+    ph,
+    cw,
+    ch
+){
+
+    mixedLayout = [];
+    mixedCount = 0;
+
+    scenarioNormalRight(
+        pw,
+        ph,
+        cw,
+        ch
+    );
+
+    scenarioNormalBottom(
+        pw,
+        ph,
+        cw,
+        ch
+    );
+
+    scenarioRotateRight(
+        pw,
+        ph,
+        cw,
+        ch
+    );
+
+    scenarioRotateBottom(
+        pw,
+        ph,
+        cw,
+        ch
+    );
+
+}
+
+/* ==========================================
+   SCENARIO A
+========================================== */
+
+function scenarioNormalRight(
+    pw,
+    ph,
+    cw,
+    ch
+){
+
+    let layout = [];
+
+    let normalCols =
+        Math.floor(pw/cw);
+
+    let normalRows =
+        Math.floor(ph/ch);
+
+    for(let c=0;c<normalCols;c++){
+
+        for(let r=0;r<normalRows;r++){
+
+            layout.push({
+
+                x:c*cw,
+                y:r*ch,
+
+                w:cw,
+                h:ch,
+
+                rotated:false
+
+            });
+
+        }
+
+    }
+
+    let remainWidth =
+        pw -
+        (normalCols*cw);
+
+    let rotCols =
+        Math.floor(
+            remainWidth/ch
+        );
+
+    let rotRows =
+        Math.floor(
+            ph/cw
+        );
+
+    for(let c=0;c<rotCols;c++){
+
+        for(let r=0;r<rotRows;r++){
+
+            layout.push({
+
+                x:
+                normalCols*cw +
+                c*ch,
+
+                y:r*cw,
+
+                w:ch,
+                h:cw,
+
+                rotated:true
+
+            });
+
+        }
+
+    }
+
+    if(
+        layout.length >
+        mixedCount
+    ){
+
+        mixedCount =
+            layout.length;
+
+        mixedLayout =
+            [...layout];
+
+    }
+
+}
+
+/* ==========================================
+   SCENARIO B
+   NORMAL + ROTATED BOTTOM
+========================================== */
+
+function scenarioNormalBottom(
+    pw,
+    ph,
+    cw,
+    ch
+){
+
+    let layout = [];
+
+    const normalCols =
+        Math.floor(pw/cw);
+
+    const normalRows =
+        Math.floor(ph/ch);
+
+    for(let c=0;c<normalCols;c++){
+
+        for(let r=0;r<normalRows;r++){
+
+            layout.push({
+
+                x:c*cw,
+                y:r*ch,
+
+                w:cw,
+                h:ch,
+
+                rotated:false
+
+            });
+
+        }
+
+    }
+
+    const remainHeight =
+        ph -
+        (normalRows * ch);
+
+    const rotCols =
+        Math.floor(pw/ch);
+
+    const rotRows =
+        Math.floor(remainHeight/cw);
+
+    for(let c=0;c<rotCols;c++){
+
+        for(let r=0;r<rotRows;r++){
+
+            layout.push({
+
+                x:c*ch,
+
+                y:
+                normalRows*ch +
+                r*cw,
+
+                w:ch,
+                h:cw,
+
+                rotated:true
+
+            });
+
+        }
+
+    }
+
+    if(layout.length > mixedCount){
+
+        mixedCount =
+            layout.length;
+
+        mixedLayout =
+            [...layout];
+    }
+
+}
+
+/* ==========================================
+   SCENARIO C
+   ROTATED + NORMAL RIGHT
+========================================== */
+
+function scenarioRotateRight(
+    pw,
+    ph,
+    cw,
+    ch
+){
+
+    let layout = [];
+
+    const rotCols =
+        Math.floor(pw/ch);
+
+    const rotRows =
+        Math.floor(ph/cw);
+
+    for(let c=0;c<rotCols;c++){
+
+        for(let r=0;r<rotRows;r++){
+
+            layout.push({
+
+                x:c*ch,
+                y:r*cw,
+
+                w:ch,
+                h:cw,
+
+                rotated:true
+
+            });
+
+        }
+
+    }
+
+    const remainWidth =
+        pw -
+        (rotCols*ch);
+
+    const normalCols =
+        Math.floor(remainWidth/cw);
+
+    const normalRows =
+        Math.floor(ph/ch);
+
+    for(let c=0;c<normalCols;c++){
+
+        for(let r=0;r<normalRows;r++){
+
+            layout.push({
+
+                x:
+                rotCols*ch +
+                c*cw,
+
+                y:r*ch,
+
+                w:cw,
+                h:ch,
+
+                rotated:false
+
+            });
+
+        }
+
+    }
+
+    if(layout.length > mixedCount){
+
+        mixedCount =
+            layout.length;
+
+        mixedLayout =
+            [...layout];
+    }
+
+}
+
+/* ==========================================
+   SCENARIO D
+   ROTATED + NORMAL BOTTOM
+========================================== */
+
+function scenarioRotateBottom(
+    pw,
+    ph,
+    cw,
+    ch
+){
+
+    let layout = [];
+
+    const rotCols =
+        Math.floor(pw/ch);
+
+    const rotRows =
+        Math.floor(ph/cw);
+
+    for(let c=0;c<rotCols;c++){
+
+        for(let r=0;r<rotRows;r++){
+
+            layout.push({
+
+                x:c*ch,
+                y:r*cw,
+
+                w:ch,
+                h:cw,
+
+                rotated:true
+
+            });
+
+        }
+
+    }
+
+    const remainHeight =
+        ph -
+        (rotRows*cw);
+
+    const normalCols =
+        Math.floor(pw/cw);
+
+    const normalRows =
+        Math.floor(remainHeight/ch);
+
+    for(let c=0;c<normalCols;c++){
+
+        for(let r=0;r<normalRows;r++){
+
+            layout.push({
+
+                x:c*cw,
+
+                y:
+                rotRows*cw +
+                r*ch,
+
+                w:cw,
+                h:ch,
+
+                rotated:false
+
+            });
+
+        }
+
+    }
+
+    if(layout.length > mixedCount){
+
+        mixedCount =
+            layout.length;
+
+        mixedLayout =
+            [...layout];
+    }
+
+}
+
+/* ==========================================
+   SWITCH LAYOUT
+========================================== */
+
+function showLayout(type){
+
+    if(type==="normal"){
+
+        drawLayout(
+            currentParentW,
+            currentParentH,
+            normalLayout
+        );
+
+    }
+    else if(type==="rotate"){
+
+        drawLayout(
+            currentParentW,
+            currentParentH,
+            rotateLayout
+        );
+
+    }
+    else{
+
+        drawLayout(
+            currentParentW,
+            currentParentH,
+            mixedLayout
+        );
+
+    }
+
+}
+
+/* ==========================================
+   DRAW CANVAS
+========================================== */
+
+function drawLayout(
+    parentW,
+    parentH,
+    layout
+){
+
+    const canvas =
+        document.getElementById("canvas");
+
+    const ctx =
+        canvas.getContext("2d");
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    const padding = 80;
+
+    const scale = Math.min(
+        (canvas.width-padding)/parentW,
+        (canvas.height-padding)/parentH
+    );
+
+    const startX =
+        (canvas.width-(parentW*scale))/2;
+
+    const startY =
+        (canvas.height-(parentH*scale))/2;
+
+    /* ===========================
+       PARENT BORDER
+    =========================== */
+
+    ctx.strokeStyle="#000";
+    ctx.lineWidth=2;
+
+    ctx.strokeRect(
+        startX,
+        startY,
+        parentW*scale,
+        parentH*scale
+    );
+
+    /* ===========================
+       PARENT WIDTH LABEL
+    =========================== */
+
+    ctx.fillStyle="#000";
+    ctx.font="16px Arial";
+    ctx.textAlign="center";
+
+    ctx.fillText(
+        parentW + " mm",
+        startX +
+        (parentW*scale/2),
+        startY - 15
+    );
+
+    /* ===========================
+       PARENT HEIGHT LABEL
+    =========================== */
+
+    ctx.save();
+
+    ctx.translate(
+        startX - 30,
+        startY +
+        (parentH*scale/2)
+    );
+
+    ctx.rotate(
+        -Math.PI/2
+    );
+
+    ctx.fillText(
+        parentH + " mm",
+        0,
+        0
+    );
+
+    ctx.restore();
+
+    /* ===========================
+       CHILD SHEETS
+    =========================== */
+
+    layout.forEach(item=>{
+
+        ctx.fillStyle =
+            item.rotated
+            ? "#4CAF50"
+            : "#ff6600";
+
+        ctx.fillRect(
+
+            startX +
+            item.x*scale,
+
+            startY +
+            item.y*scale,
+
+            item.w*scale,
+            item.h*scale
+
+        );
+
+        ctx.strokeStyle="#fff";
+
+        ctx.strokeRect(
+
+            startX +
+            item.x*scale,
+
+            startY +
+            item.y*scale,
+
+            item.w*scale,
+            item.h*scale
+
+        );
+
+        /* =======================
+           CHILD WIDTH
+        ======================= */
+
+        ctx.fillStyle="#000";
+        ctx.font="11px Arial";
+        ctx.textAlign="center";
+
+        ctx.fillText(
+
+            item.w,
+
+            startX +
+            item.x*scale +
+            (item.w*scale/2),
+
+            startY +
+            item.y*scale +
+            15
+
+        );
+
+        /* =======================
+           CHILD HEIGHT
+        ======================= */
+
+        ctx.save();
+
+        ctx.translate(
+
+            startX +
+            item.x*scale +
+            item.w*scale -
+            10,
+
+            startY +
+            item.y*scale +
+            (item.h*scale/2)
+
+        );
+
+        ctx.rotate(
+            -Math.PI/2
+        );
+
+        ctx.fillText(
+            item.h,
+            0,
+            0
+        );
+
+        ctx.restore();
+
+    });
+
+}
+
+</script>
